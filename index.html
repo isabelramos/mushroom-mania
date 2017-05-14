@@ -12,7 +12,34 @@
 
 		<h1>Mushroom Mania!</h1>
 
+				
+		<div ng-controller="MushroomCtrl">
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<div class="form-group">
 
+					    <input type="text" class="form-control" id="search-mushrooms" placeholder="Search Mushrooms" ng-model="searchText">
+
+					    <input type="radio" class="radio-inline" id="poisonous" placeholder="">         	
+					    <label for="Poisonous">Poisonous</label>
+
+					    <input type="radio" class="radio-inline" id="non-poisonous" placeholder="">
+					    <label for="Non-poisonous">Non-poisonous</label>
+				    </div>
+				</div>    
+			</div>
+
+			<div ng-repeat="mushroom in mushrooms | filter: searchText">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{mushroom.name}}</h3>
+					</div>
+					<div class="panel-body">
+						{{mushroom.description}}
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 
