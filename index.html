@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <title>Mushroom Mania!</title>
+	  <link rel="stylesheet" type="text/css" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
+	  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" type="text/css" href="styles/main.css">
+	</head>
+
+	<body ng-app="MushroomApp">
+
+		<h1>Mushroom Mania!</h1>
+
+				
+		<div ng-controller="MushroomCtrl">
+
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<div class="form-group">
+
+					    <input type="text" class="form-control" id="search-mushrooms" placeholder="Search Mushrooms" ng-model="searchText">
+
+					    <form>
+						    <input type="radio" name="mushroom" class="radio-inline" id="poisonous" value="1" ng-click="filterMushrooms = {edible: false}">         	
+						    <label for="Poisonous">Poisonous</label>
+
+						    <input type="radio" name="mushroom" class="radio-inline" id="non-poisonous" value="2" ng-click="filterMushrooms = {edible: true}">
+						    <label for="Non-poisonous">Non-poisonous</label>
+					    </form>
+				    </div>
+				</div>    
+			</div>
+
+			<div ng-repeat="mushroom in mushrooms | filter: searchText | filter:filterMushrooms"">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title" >{{mushroom.name}}</h3>
+							</div>
+							<div class="panel-body">
+								{{mushroom.description}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="javascripts/app.js"></script>
+	<script type="text/javascript" src="javascripts/AppConstants.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+	</body>
+
+</html>
